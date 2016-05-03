@@ -1,7 +1,14 @@
-<p id="notice"><%= notice %></p>
+<!--p id="notice"><%= notice %></p-->
 
-<h1>Listing Users</h1>
+<h1>Users</h1>
 
+<div class="container">
+  <ul class="users">
+    <%= render partial: "shared/user",collection: @users %>
+  </ul>
+</div>
+
+<!--
 <table>
   <thead>
     <tr>
@@ -27,3 +34,4 @@
 <br>
 
 <%= link_to 'New User', new_user_path %>
+-->

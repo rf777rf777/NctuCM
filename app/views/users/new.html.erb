@@ -1,5 +1,42 @@
-<h1>New User</h1>
+<h1>Sign Up Now!!</h1>
 
-<%= render 'form' %>
+<!-- <%= render 'form' %>  --><!--連到_form.html.erb-->
 
+<div class="row">
+	<%= form_for @user do |f| %>
+	
+		<%= render "shared/form_errors" , record: @user %>
+
+	<div>
+		<!--註冊名稱欄-->
+		<%= f.label :name %> 
+		<br><%= f.text_field :name %> 
+	</div>
+
+	<div>
+		<!--註冊email欄-->
+		<%= f.label :email %> 
+		<br><%= f.text_field :email %> 
+	</div>
+
+	<div>
+		<!--註冊密碼欄-->
+		<%= f.label :password %> 
+		<br><%= f.text_field :password %> 
+	</div>
+
+	<div>
+		<!--密碼驗證欄-->
+		<%= f.label :password_confirmation %> 
+		<br><%= f.text_field :password_confirmation %> 
+	</div>
+
+		<br><div>
+			<%= f.submit "Register!" ,class:"btn btn-primary" %>
+		</div>
+
+	<% end %>
+</div>
+
+<br>
 <%= link_to 'Back', users_path %>

@@ -2,22 +2,53 @@
 <html>
 <head>
   <title>NctuCM</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 	<!-- New header -->
-<header class="navbar navbar-fixed-top navbar-inverse">
+<header class="navbar navbar-fixed-top navbar-inverse" role="navigation">
     <div class="navbar-inner">
         <div class="container">
-          <%= link_to "NctuCM", "#", id: "logo" %>
+            <ul class="nav navbar-nav pull-left">
+            <%= link_to "NctuCM", root_path , id: "logo" %>
+            </ul>
+            <nav>
+              <ul class="nav navbar-nav pull-right">
+                <li><%= link_to "Home", root_path %></li>
+                <% if signed_in? %>  
+                  <li><%= link_to "Users", users_path %></li>
+                  <li id="fat-menu" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                      <%= current_user.name %> <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><%= link_to "Profile" , current_user %></li>
+                      <li><%= link_to "Settings" ,  edit_user_path(current_user) %></li>
+                      <li class="divider"></li>
+                      <li>
+                        <%= link_to "Sign out" , session_path, method: "delete" %>
+                      </li>
+                    </ul>
+                  </li>
+                  <% else %>
+                  <li><%= link_to "Register", new_user_path %></li>
+                  <li><%= link_to "Sign in" , new_session_path %></li>
+                  <% end %>
+                </ul>
+            </nav>
           </div>
     </div>
 </header>
+</body>
+
 
 <!-- Content wrapped in container -->
 <div class="container">
+  <% flash.each do |key,value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+  <% end %>
 <%= yield %>
 <!-- New footer -->
   <footer class="footer">
@@ -29,5 +60,4 @@
   <%= content_tag :div, debug(params) if Rails.env.development? %>
 </div>
 
-</body>
 </html>

@@ -1,7 +1,33 @@
 Rails.application.routes.draw do
+  #get 'posts/new'
+
+  #get 'posts/create'
+
+  #get 'sessions/new'
+
+  #get 'sessions/create'
+
+  #get 'sessions/destroy'
+
   #get 'root/home'
 
-  resources :users
+#get post delete 為HTTP方法
+  resources :users do #設定follow與unfollow路徑
+    get 'followers', on: :member
+    get 'followings', on: :member
+    post 'follow', on: :member  #建立一個follow路徑 這個路徑適用於單獨/特定的用戶上
+    delete 'unfollow' ,on: :member  #
+  end
+ 
+  resources :posts
+
+
+  # :session 這個資源只有三個actions : new create destroy
+  resource :session, only: [ :new, :create, :destroy ]
+
+  #Rails.env.development? 的意思是 如果我們在開發(Development)環境裡 我們只會設定這個路徑
+  get '/sandbox', to: 'root#sandbox' if Rails.env.development?
+
   #This maps / to the root#home action
   root to: 'root#home'
   # The priority is based upon order of creation: first created -> highest priority.

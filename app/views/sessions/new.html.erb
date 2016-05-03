@@ -1,0 +1,16 @@
+<h1>Sign-In</h1>
+<%= form_for :session, url: session_path do |f| %>
+	
+	<!--登入畫面電子郵件-->
+	<%= f.label :email %> <br>
+	<%= f.text_field :email %> <br>
+	
+	<!--登入畫面密碼-->
+	<%= f.label :password%> <br>
+	<%= f.text_field :password%> <br>
+
+	<br><div class="actions">
+		<%= f.submit "Sign-In" ,class:"btn btn-primary" %>
+	</div>
+<% end %>
+<!--<p>Find me in app/views/sessions/new.html.erb</p>-->
