@@ -1,16 +1,19 @@
 class UsersController < ApplicationController
+  skip_before_action :authenticate_user, only: [:new ,:create]
   before_action :set_user, only: [:show, :edit, :update, :destroy , :follow,:unfollow,:followers, :followings]
   before_action :authenticate_user,except: [:new, :create]
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    #@users = User.all
+    @users = User.all.page(params[:page])  #分頁
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
-    @posts = @user.posts #這裡設定了@posts變數裡面的資料
+    #@posts = @user.posts #這裡設定了@posts變數裡面的資料
+    @posts = @user.posts.page(params[:page])  #分頁
   end
 
   # GET /users/new
@@ -73,7 +76,8 @@ class UsersController < ApplicationController
   end
 
   def followers
-    @users = @user.followers
+    #@users = @user.followers
+    @users = @user.followers.page(params[:page])  #分頁
   end
 
   def followings

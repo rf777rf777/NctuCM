@@ -6,6 +6,7 @@
   <ul class="users">
     <%= render partial: "shared/user",collection: @users %>
   </ul>
+    <%= will_paginate @users %> <!--顯示分頁-->
 </div>
 
 <!--

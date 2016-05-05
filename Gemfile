@@ -50,3 +50,9 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Generate fack content  facker為專門建立隨機資料的功能插件
+gem 'faker' , group: [:development,:test]
+
+# Break large result sets into multiple pages 資料分頁的插件
+gem 'will_paginate'

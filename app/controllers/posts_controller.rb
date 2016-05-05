@@ -2,7 +2,8 @@ class PostsController < ApplicationController
 
 #before_action :authenticate_user, only: [ :create, :index, :destroy ] #只有建立 短文列表 刪除等action需要用戶登入
   def index
-    @posts = Post.from_followed_users(current_user).order("created_at DESC")
+    #@posts = Post.from_followed_users(current_user).order("created_at DESC")
+    @posts = Post.from_followed_users(current_user).order("created_at DESC").page(params[:page])  #加入分頁功能
   	@post = current_user.posts.build #在index頁面建立一個@post容器 讓我們可以建立短文
   end
 
