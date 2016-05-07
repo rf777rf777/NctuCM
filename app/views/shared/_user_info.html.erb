@@ -1,7 +1,9 @@
 <h1> 
 	<%= gravatar_for user %> <!-- 顯示大頭照 (a helper method)-->
+	<h4>
 	<%= user.name %>  <!-- 輸出用戶名 -->
-</h1>
+	</h4>
+</h1><br>
 	<%= pluralize user.posts.count , "posts" %> <br>
 	<%= link_to pluralize(user.followers.count,"follower"), followers_user_path(user) %> <br>
 	<%= link_to pluralize(user.followed_users.count,"following"), followings_user_path(user) %><br>
