@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 	has_secure_password
 
 	#email在儲存之前全部變小寫(downcase)
-	before_save {self.email = email.downcase}
+	#before_save {self.email = email.downcase}
 	
 	#增加一個before_save的callback (與add_user_session_token.rb中的 :session呼應 所以每當建立一個用戶時系統都會產生token)
 	before_save{self.session_token ||= Digest::SHA1.hexdigest(SecureRandom.urlsafe_base64.to_s)}  
