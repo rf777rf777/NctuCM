@@ -2,10 +2,12 @@
 
 * Ruby 與 Rails版本
  Ruby : 2.2.0 Rails : 4.2.6
-* 開發平台
- 依舊是問題很多的Win7...
+
 * 測試網址 http://gentle-journey-15893.herokuapp.com/
  1.請先註冊帳號密碼後，會自動登入。
  2.按下巡覽列的Home鍵，會進入發文介面，可發文，自己發的文章會被列於右方。
  3.User鍵會導向於這個網站註冊的使用者列表，點選自己之外的任何使用者可進行/取消關注。
  4.回到Home鍵，右方將會出現關注者的文章。
+ 5.也可使用測試帳號登入:
+   Email : TryAccount@TryAccount.com 
+   Password : 123
