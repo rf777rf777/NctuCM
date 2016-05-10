@@ -1,6 +1,15 @@
-<h1>WelcomeBackHome</h1>
-<!-- <p>Find me in app/views/root/home.html.erb</p> -->
-<center>
-	 <%= link_to "Sign-in", new_session_path ,class:"btn btn-large btn-primary" %> <br>
-	<%= link_to "Register!",new_user_path %>
-</center>
+<div class="jumbotron">
+	<div class="container">
+		<h1>Welcome</h1>
+		<!-- <p>Find me in app/views/root/home.html.erb</p> -->
+		<p>這是我第二個Ruby on Rails作品，是一個簡單的社群平台，參考各種Rails的書籍以及資料所建構，部署於Heroku，前端設計尚未完成，登入需要先註冊帳號密碼，內容除了有Po文功能，另能關注其他使用者。</p>
+		<h3>可使用測試帳號登入：</h3>
+		<h3>  Email : TryAccount@TryAccount.com  </h3>
+		<h3>  Password : 123  </h3>
+	
+	</div><br>
+	<center>
+		<%= link_to "Sign-in", new_session_path ,class: "btn btn-lg btn-success" %> <br>
+		<%= link_to "Register!",new_user_path %>
+	</center>
+</div>
