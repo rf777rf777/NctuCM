@@ -1,4 +1,10 @@
 class User < ActiveRecord::Base
+
+	#可用sunspot搜尋名字或email
+	searchable do
+		text :name,:email
+	end
+
 	#設定用戶有很多的短文
 	has_many :posts, dependent: :destroy
 

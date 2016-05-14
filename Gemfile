@@ -6,10 +6,15 @@ gem 'rails', '4.2.6'
 
 # 加入bootstrap美化UI
 gem 'bootstrap-sass'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3',group:[:development, :test] #只有在開發及測試環境用到的插件
 gem 'pg', group: :production #只有在上線環境用到的插件
 gem 'rails_12factor', group: :production #只有在上線環境用到的插件
+
+#加入搜尋功能的gem
+gem 'sunspot_rails'  #sunspot的功能是建立想要搜尋的目錄
+gem 'sunspot_solr' , group: :development  #solr伺服器是把這個資料儲存 然後提供搜尋服務給App
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
