@@ -61,3 +61,21 @@ gem 'faker' , group: [:development,:test]
 
 # Break large result sets into multiple pages 資料分頁的插件
 gem 'will_paginate'
+
+# RSpec測試框架 ...裝最新版會發生錯誤...所以指定2.8版
+gem 'rspec-rails','2.8' , group: [:development,:test]
+
+# Testing for Humans
+gem 'capybara' , group: :test
+
+#Testing JavaScript execution
+gem 'selenium-webdriver' , group: :test
+
+# Create fixtures for Testing
+gem 'factory_girl_rails' , '~> 4.0' , group: :test
+
+# Launch pages during testing
+gem 'launchy'
+
+# Clear fixtures from database between tests
+gem 'database_cleaner', '1.0.0.RC1'
