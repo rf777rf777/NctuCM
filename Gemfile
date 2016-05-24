@@ -79,3 +79,5 @@ gem 'launchy'
 
 # Clear fixtures from database between tests
 gem 'database_cleaner', '1.0.0.RC1'
+
+gem 'test-unit'

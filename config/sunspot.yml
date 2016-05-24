@@ -1,6 +1,6 @@
 production:
   solr:
-    hostname: http://ec2-54-227-7-184.compute-1.amazonaws.com:8080/rf777rf777@gmail.com
+    hostname: localhost
     port: 8983
     log_level: WARNING
     path: /solr/production

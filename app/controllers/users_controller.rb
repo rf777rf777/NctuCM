@@ -42,7 +42,7 @@ class UsersController < ApplicationController
 =end
     if @user.save
       sign_in @user  #讓剛註冊玩的用戶馬上自動登入
-      flash[:success] = "Welcome,#{@user.name}"
+      flash[:success] = "Welcome,#{@user.name}!"
       redirect_to @user #, notice: "User is successfully created !!"
     else
       render action: 'new'

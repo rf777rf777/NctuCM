@@ -1,7 +1,11 @@
 #測試users#index頁面有無辦法開啟
+
 require 'spec_helper'
 
 describe "Users" do #我們的測試要針對users(用戶資料)
+let(:user){create(:user)} #測試之前 請先建立一個新的用戶
+
+=begin
   describe "GET /users" do #我們要測試的頁面是users#index
     it "works! (now write some real specs)" do
       # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
@@ -9,15 +13,34 @@ describe "Users" do #我們的測試要針對users(用戶資料)
       response.status.should be(200) #返回值應該要是HTTP code 200 (頁面沒問題的意思)
     end
   end
+=end
 
   describe "POST /users" do
   	it "registers" do #能不能註冊
+  		new_user = build(:user)
+  		visit new_user_path
+  		fill_in :user_name,with: new_user.name
+  		fill_in :user_email,with: new_user.email
+  		fill_in :user_password,with: new_user.password
+  		fill_in :user_password_confirmation,with: new_user.password
+  		click_button "Register"
+  		page.should have_content("Welcome,#{new_user.name}!")
   	end
 
   	it "does not allow blank name" do #名字不能為空白
   	end
 
   	it "does not allow duplicate email" do #不能有重複的email
+      new_user=build(:user)
+      visit new_user_path
+
+      fill_in :user_name,with: new_user.name
+      #Fill in everything correctly except use an existing email
+      fill_in :user_email,with: user.email
+      fill_in :user_password , with: new_user.password
+      fill_in :user_password_confirmation ,with: new_user.password
+      click_button "Register"
+      page.should have_content("Email has already been taken")
   	end
 
   	it "does not allow incorrect email format" do #必須有正確的email格式
