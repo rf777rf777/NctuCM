@@ -50,6 +50,7 @@ class UsersController < ApplicationController
   end
 
   def follow
+=begin
     if current_user?(@user) #這個用戶是你自己嗎?
       flash[:error] = "You Cannot follow yourself"
     elsif current_user.following?(@user)  #你是否已經在關注此用戶了?
@@ -64,15 +65,29 @@ class UsersController < ApplicationController
     
     end   
     redirect_to @user
+=end
+
+    if request.xhr?
+      #如果view頁面有傳來命令要關注用戶 就執行current_user.follow(@user) 
+      #如果成功就回覆狀態200 不成功回覆狀態400 nothing:true的意思是不要做任何其他動作
+      render status: current_user.follow(@user) ? 200:400,nothing: true
+    end
   end
 
   def unfollow
+=begin
     if current_user.unfollow(@user)  #如果取消關注成功
       flash[:success] = "You no longer follow #{@user.name}"
     else  #任何其他狀況
         flash[:error] = "You cannot unfollow #{@user.name}"
     end
     redirect_to @user
+=end
+    if request.xhr?
+      #如果view頁面有傳來命令要關注用戶 就執行current_user.unfollow(@user) 
+      #如果成功就回覆狀態200 不成功回覆狀態400 nothing:true的意思是不要做任何其他動作
+      render status: current_user.unfollow(@user) ? 200:400,nothing: true
+    end
   end
 
   def followers
